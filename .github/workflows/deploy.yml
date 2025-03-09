@@ -25,14 +25,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          # Remove caching entirely to eliminate the dependency on lock files
           
+      - name: Verify build environment
+        run: node verify-build-environment.js
+        
       - name: Install dependencies
-        # Simple, direct installation without lock file requirements
         run: npm install
         
       - name: Debug environment
-        # Add diagnostic information to identify potential issues
         run: |
           echo "Repository structure:"
           ls -la
@@ -42,14 +42,14 @@ jobs:
           npm -v
           echo "Current directory:"
           pwd
+          echo "Package.json content:"
+          cat package.json
           
       - name: Build
-        # Simplified build command with error output capture
         run: npm run build 2>&1 | tee build_output.log
         
-      - name: Upload build logs if failure
-        # Preserve build logs for diagnosis even if the build fails
-        if: failure()
+      - name: Upload build logs (always)
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: build-logs
