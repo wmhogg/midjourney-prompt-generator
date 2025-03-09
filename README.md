@@ -2,6 +2,12 @@
 
 An advanced interactive tool for creating richly detailed Midjourney prompts with intelligent parameter optimization.
 
+![Midjourney Prompt Generator Screenshot](https://github.com/wmhogg/midjourney-prompt-generator/assets/4960663/placeholder-image-id)
+
+## Live Demo
+
+**[Use the Prompt Generator Now](https://wmhogg.github.io/midjourney-prompt-generator/)**
+
 ## Overview
 
 This application provides a sophisticated interface for engineering Midjourney AI art prompts. It combines structured input fields with intelligent enhancement algorithms to generate highly effective prompts optimized for Midjourney's image generation system.
@@ -16,35 +22,88 @@ This application provides a sophisticated interface for engineering Midjourney A
 - **Prompt History**: Keep track of your most successful prompts
 - **Clipboard Integration**: Single-click copy functionality
 
-## Getting Started
+## Using the Prompt Generator
+
+### Core Elements
+
+1. **Subject**: The primary focus of your image (required)
+2. **Action**: What the subject is doing (optional)
+3. **Environment**: The setting or background (optional)
+
+### Artistic Elements
+
+1. **Style**: The artistic approach (e.g., "watercolor," "cyberpunk," "oil painting")
+2. **Mood**: The emotional tone (e.g., "ethereal," "mysterious," "melancholic")
+3. **Lighting**: How the scene is illuminated (e.g., "golden hour," "volumetric light")
+4. **Quality Descriptors**: Terms that enhance detail (e.g., "highly detailed," "intricate")
+5. **Artist References**: Style influences (e.g., "by Greg Rutkowski," "in the style of Moebius")
+
+### Technical Parameters
+
+1. **Aspect Ratio** (`--ar`): Controls image dimensions
+2. **Chaos** (`--c`): Adjusts randomness/variation
+3. **Stylize** (`--s`): Controls stylistic intensity
+4. **Version**: Specifies the model version
+5. **Exclusion Parameters** (`--no`): Removes unwanted elements
+
+## Advanced Prompt Engineering Tips
+
+### Parameter Balancing
+
+- **Chaos vs. Consistency**: Lower chaos values (0-20) create more predictable results, while higher values (50-100) generate more varied interpretations
+- **Stylization Spectrum**: Lower stylize values (100-250) produce more photorealistic results, while higher values (750-1000) create more artistic, interpretive renderings
+- **Quality Enhancement**: The tool automatically adds the `--q 2` parameter for higher quality renderings
+
+### Effective Prompt Strategies
+
+1. **Focus on Specificity**: Be precise about what you want to see
+2. **Layer Your Descriptions**: Build complexity with complementary artistic elements
+3. **Strategic Parameter Combinations**: Different parameter combinations can dramatically alter output style:
+
+| Style Goal | Recommended Parameters | Effect |
+|------------|------------------------|--------|
+| Photorealism | `--s 100 --c 10` | Low stylization and chaos create more literal interpretations |
+| Artistic Illustration | `--s 750 --c 20` | Higher stylization with controlled variation |
+| Abstract Experimentation | `--s 1000 --c 80` | Maximum stylization with high randomness |
+| Consistent Series | `--s 250 --c 0` | Moderate style with zero chaos ensures consistency |
+
+## Development Guide
+
+### Local Setup
 
 1. Clone this repository
-2. Install dependencies with `npm install`
-3. Start the development server with `npm start`
+   ```bash
+   git clone https://github.com/wmhogg/midjourney-prompt-generator.git
+   cd midjourney-prompt-generator
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Start the development server
+   ```bash
+   npm start
+   ```
+
 4. Visit `http://localhost:3000` in your browser
 
-## Usage Guide
+### Deployment
 
-1. **Core Elements**: Begin by entering your subject, action, and environment
-2. **Artistic Elements**: Select style, mood, lighting, and other creative parameters
-3. **Technical Parameters**: Adjust aspect ratio, chaos, stylize values, and other technical settings
-4. **Generate & Copy**: Your enhanced prompt will be generated automatically and can be copied to the clipboard
-5. **History**: Previously generated prompts are saved for future reference
+The application is automatically deployed to GitHub Pages whenever changes are pushed to the main branch.
 
-## Technologies Used
+For manual deployment:
 
-- React.js
-- Local Storage for persistence
-- Modern CSS with responsive design
-- Lucide React for icons
+```bash
+npm run deploy
+```
 
-## Parameters Explained
+### Project Structure
 
-- **Chaos (`--c`)**: Controls randomness in generation (0-100)
-- **Stylize (`--s`)**: Adjusts stylistic intensity (100-1000)
-- **Aspect Ratio (`--ar`)**: Sets image dimensions (16:9, 1:1, etc.)
-- **Quality (`--q`)**: Controls rendering quality (default: 2 for high quality)
-- **Version (`--v`)**: Specifies which Midjourney model to use
+- `src/components/MidjourneyPromptBuilder.js`: The main component with prompt generation logic
+- `src/App.js`: Application entry point
+- `.github/workflows/deploy.yml`: GitHub Actions workflow for automatic deployment
 
 ## License
 
