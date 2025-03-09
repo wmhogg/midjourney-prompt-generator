@@ -1,4 +1,5 @@
 # Midjourney Prompt Generator
+# Trigger initial GitHub Pages deployment
 
 An advanced interactive tool for creating richly detailed Midjourney prompts with intelligent parameter optimization.
 
