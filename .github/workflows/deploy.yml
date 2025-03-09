@@ -31,11 +31,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          # Explicitly disable caching to avoid lock file requirement
           cache: 'npm'
+          cache-dependency-path: '**/package.json'
       
       - name: Build
         run: |
-          # Install dependencies with npm install instead of npm ci for first-time build
+          # Install dependencies without requiring a lock file
           npm install
           npm run build
       
